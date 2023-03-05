@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+// import logo from "./logo.svg";
+import "./App.css";
+import Profile from "./components/Profile";
+import Calculator from "./components/calculator/calculator";
+import ShoppingList from "./components/ShoppingList/ShoppingList";
+import Happy from "./components/Customhooks/Happy";
+// import Form from "./components/Form/Form";
+import Productlist from "./components/productlist";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  // return <Productlist />;
+  return <Happy />;
+  // return <Profile>This is react class</Profile>;
+  // return <Calculator />;
+  // return <Form />;
 }
 
 export default App;
