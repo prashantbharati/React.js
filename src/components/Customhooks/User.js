@@ -3,12 +3,12 @@ import useInputForm from "./useInputForm";
 const User = () => {
   const [username, setUsername, resetUsername] = useInputForm("");
   const [password, setPassword, resetPassword] = useInputForm("");
-  const emailinputRef = useRef();
+  const emailinputRef = useRef(); // line 1
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(username);
     console.log(password);
-    console.log(emailinputRef.current.value);
+    console.log(emailinputRef.current.value); // 3rd line
     // setPassword("");
     // setUsername("");
     resetPassword();
@@ -48,7 +48,7 @@ const User = () => {
           type="text"
           //   onChange={handlepasswordchange}
           //   value={password}
-          ref={emailinputRef}
+          ref={emailinputRef} // line 2
         ></input>
 
         <button type="submit">Submit</button>
