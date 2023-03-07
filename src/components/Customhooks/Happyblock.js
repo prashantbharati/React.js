@@ -1,11 +1,7 @@
 import React from "react";
-
+import clasess from "./Happyblock.module.css";
 const Happyblock = () => {
-  return (
-    <div style={{ height: "100px", width: "100px", backgroundColor: "aqua" }}>
-      Happyblock
-    </div>
-  );
+  return <div className={clasess.blockstyle}>Happyblock</div>;
 };
 
 export default Happyblock;

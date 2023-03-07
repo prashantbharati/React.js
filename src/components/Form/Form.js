@@ -2,32 +2,31 @@ import React, { useState } from "react";
 
 const Form = (props) => {
   const [name, setName] = useState("");
-  //   int a=give(4);
   const [image, setImage] = useState("");
-  const [details, setDetails] = useState("");
-  const [count, setCount] = useState(0);
+  const [detail, setDetail] = useState("");
+  const [count, setCount] = useState("");
 
   const handlesubmit = (event) => {
     event.preventDefault();
     console.log(name);
     console.log(image);
-    console.log(details);
+    console.log(detail);
     console.log(count);
-
-    setName("");
-    setImage("");
-    setDetails("");
-    setCount("");
 
     props.setProduct([
       ...props.product,
       {
         name: name,
         img: image,
-        detail: details,
+        detail: detail,
         count: count,
       },
     ]);
+
+    setName("");
+    setImage("");
+    setDetail("");
+    setCount("");
   };
 
   const handlenamechange = (event) => {
@@ -38,8 +37,8 @@ const Form = (props) => {
     setImage(event.target.value);
   };
 
-  const handledetailschange = (event) => {
-    setDetails(event.target.value);
+  const handledetailchange = (event) => {
+    setDetail(event.target.value);
   };
 
   const handlecountchange = (event) => {
@@ -54,7 +53,7 @@ const Form = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        border: "2px solid grey",
+        border: "solid 2px grey",
       }}
     >
       <form onSubmit={handlesubmit}>
@@ -73,18 +72,18 @@ const Form = (props) => {
           <input
             placeholder="image"
             type="text"
-            onChange={handleimagechange}
             value={image}
+            onChange={handleimagechange}
           ></input>
         </div>
 
         <div>
-          <label>Deatils</label>
+          <label>Details</label>
           <input
             placeholder="details"
             type="text"
-            onChange={handledetailschange}
-            value={details}
+            value={detail}
+            onChange={handledetailchange}
           ></input>
         </div>
 
@@ -93,10 +92,11 @@ const Form = (props) => {
           <input
             placeholder="count"
             type="number"
-            onChange={handlecountchange}
             value={count}
+            onChange={handlecountchange}
           ></input>
         </div>
+
         <button type="submit">Submit</button>
       </form>
     </div>
