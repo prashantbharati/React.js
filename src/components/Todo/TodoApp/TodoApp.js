@@ -1,27 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TodoList from "../TodoList/TodoList";
 import classes from "./TodoApp.module.css";
 import Form from "../Form/Form";
 const TodoApp = () => {
-  const defaulttodo = [
-    {
-      id: "1",
-      task: "Go to market",
-      completed: false,
-    },
-    {
-      id: "2",
-      task: "Go to class",
-      completed: false,
-    },
-    {
-      id: "3",
-      task: "Play videogames",
-      completed: false,
-    },
-  ];
+  const defaulttodo = JSON.parse(localStorage.getItem("todos") || "[]");
+
+  // const defaulttodo = [
+  //   {
+  //     id: "1562",
+  //     task: "Go to school",
+  //     completed: false,
+  //   },
+  //   {
+  //     id: "1772",
+  //     task: "Play music",
+  //     completed: false,
+  //   },
+  //   {
+  //     id: "1500",
+  //     task: "Learn react",
+  //     completed: false,
+  //   },
+  // ];
 
   const [todos, setTodos] = useState(defaulttodo);
+
+  useEffect(() => {
+    // console.log("useeffect ran");
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const deletetodo = (id) => {
     setTodos((prevstate) => {
@@ -29,23 +36,19 @@ const TodoApp = () => {
     });
   };
 
-  const markthrough = (id) => {
+  const marktodo = (id) => {
     setTodos((prevstate) => {
       return prevstate.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        todo.id !== id ? todo : { ...todo, completed: !todo.completed }
       );
     });
   };
 
   return (
     <div className={classes.topdiv}>
-      <h1>To-DO List APP</h1>
+      <h1>ToDO APP</h1>
       <Form todos={todos} setTodos={setTodos} />
-      <TodoList
-        todos={todos}
-        deletetodo={deletetodo}
-        markthrough={markthrough}
-      />
+      <TodoList todos={todos} deletetodo={deletetodo} marktodo={marktodo} />
     </div>
   );
 };

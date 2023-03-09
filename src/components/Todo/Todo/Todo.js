@@ -1,22 +1,21 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
 import classes from "./Todo.module.css";
-const Todo = ({ task, completed, deletetodo, id, markthrough }) => {
+const Todo = ({ task, completed, deletetodo, id, marktodo }) => {
   return (
     <li className={classes.todo}>
       <input
-        onClick={() => markthrough(id)}
         type="checkbox"
         defaultChecked={completed}
+        onClick={() => marktodo(id)}
       />
       <span
-        style={{ textDecoration: completed ? "line-through" : "none" }}
         className={classes.todotext}
+        style={{ textDecoration: completed ? "line-through" : "none" }}
       >
-        {" "}
-        {task}{" "}
+        {task}
       </span>
-      <span onClick={() => deletetodo(id)} className={classes.todoicon}>
+      <span className={classes.todoicon} onClick={() => deletetodo(id)}>
         <FaTrash />
       </span>
     </li>

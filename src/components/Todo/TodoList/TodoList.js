@@ -1,7 +1,6 @@
 import React from "react";
 import Todo from "../Todo/Todo";
-import initialtodo from "../initialtodo";
-const TodoList = ({ todos, deletetodo, markthrough }) => {
+const TodoList = ({ todos, deletetodo, marktodo }) => {
   return (
     <div>
       {todos.map((todo) => {
@@ -10,8 +9,8 @@ const TodoList = ({ todos, deletetodo, markthrough }) => {
             task={todo.task}
             completed={todo.completed}
             deletetodo={deletetodo}
+            marktodo={marktodo}
             id={todo.id}
-            markthrough={markthrough}
           />
         );
       })}

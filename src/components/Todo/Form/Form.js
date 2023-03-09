@@ -1,43 +1,47 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
-const Form = ({ todos, setTodos }) => {
-  const [userInput, setuserInput] = useState("");
-  console.log(todos);
+const Form = ({ setTodos }) => {
+  const [usertask, setUsertask] = useState("");
 
-  const handlechangne = (event) => {
-    setuserInput(event.target.value);
+  const handlechange = (event) => {
+    setUsertask(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handlesubmit = (event) => {
     event.preventDefault();
-    // console.log(userInputref.current.value);
-    // userInputref.current.value = "";
+    console.log(usertask);
+
     setTodos((prevstate) => {
       return [
         ...prevstate,
         {
           id: uuid(),
-          task: userInput,
+          task: usertask,
           completed: false,
         },
       ];
     });
 
-    setuserInput("");
-    // userInputref.current.value = "";
+    setUsertask("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Enter the task</label>
+    <form onSubmit={handlesubmit}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <label>Enter your task</label>
         <input
-          placeholder="Enter task"
-          value={userInput}
-          onChange={handlechangne}
-        />
+          placeholder="enter task"
+          type="text"
+          onChange={handlechange}
+          value={usertask}
+        ></input>
+        <button type="submit">Submit</button>
       </div>
-      <button type="submit">ADD</button>
     </form>
   );
 };
