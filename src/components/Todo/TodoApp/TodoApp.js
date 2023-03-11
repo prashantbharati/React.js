@@ -26,7 +26,6 @@ const TodoApp = () => {
   const [todos, setTodos] = useState(defaulttodo);
 
   useEffect(() => {
-    // console.log("useeffect ran");
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
@@ -36,10 +35,10 @@ const TodoApp = () => {
     });
   };
 
-  const marktodo = (id) => {
+  const markthrough = (id) => {
     setTodos((prevstate) => {
       return prevstate.map((todo) =>
-        todo.id !== id ? todo : { ...todo, completed: !todo.completed }
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       );
     });
   };
@@ -48,7 +47,11 @@ const TodoApp = () => {
     <div className={classes.topdiv}>
       <h1>ToDO APP</h1>
       <Form todos={todos} setTodos={setTodos} />
-      <TodoList todos={todos} deletetodo={deletetodo} marktodo={marktodo} />
+      <TodoList
+        todos={todos}
+        deletetodo={deletetodo}
+        markthrough={markthrough}
+      />
     </div>
   );
 };

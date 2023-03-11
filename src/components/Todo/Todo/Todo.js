@@ -1,13 +1,13 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
 import classes from "./Todo.module.css";
-const Todo = ({ task, completed, deletetodo, id, marktodo }) => {
+const Todo = ({ task, completed, deletetodo, id, markthrough }) => {
   return (
     <li className={classes.todo}>
       <input
         type="checkbox"
         defaultChecked={completed}
-        onClick={() => marktodo(id)}
+        onClick={() => markthrough(id)}
       />
       <span
         className={classes.todotext}

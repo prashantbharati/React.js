@@ -1,15 +1,15 @@
 import React from "react";
 import Todo from "../Todo/Todo";
-const TodoList = ({ todos, deletetodo, marktodo }) => {
+const TodoList = ({ todos, deletetodo, markthrough }) => {
   return (
     <div>
       {todos.map((todo) => {
         return (
           <Todo
             task={todo.task}
-            completed={todo.completed}
             deletetodo={deletetodo}
-            marktodo={marktodo}
+            markthrough={markthrough}
+            completed={todo.completed}
             id={todo.id}
           />
         );
